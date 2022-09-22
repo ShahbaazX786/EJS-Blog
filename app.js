@@ -22,11 +22,20 @@ app.get('/',function(req,res){
 
 app.get('/about',function(req,res){
     res.render('about',{pagetitle:'About us',abouttext:aboutContent})
-})
+});
 
 app.get('/contact',function(req,res){
     res.render('contact',{pagetitle:'Contact us',contacttext:contactContent})
-})
+});
+
+app.get('/post:id',function(req,res){
+    const title = req.body.id;
+    const desc = req.body.desc;
+    res.render('post',{heading:title,content:desc})
+});
+
+
+
 
 
 app.listen(PORT,function(req,res){
