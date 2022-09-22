@@ -1,6 +1,8 @@
 ## Dairy | Blog Using EJS
 > This is a daily blog project developed using Embedded Javascript (EJS), HTML,CSS,JS also a pinch of the lodash for utility and all the routing requests and handling of server requests is coded in express and served via Express server.
 
+[Click here to check Live demo](https://guarded-peak-87083.herokuapp.com/).
+
 #### 1.Homepage
 ![Screenshot-1](./public/assets/Readme-screenshots/1.png)
 #### 2.Compose Page
