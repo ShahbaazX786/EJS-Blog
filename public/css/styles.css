@@ -35,3 +35,18 @@
     font-size: 12px;
     color: #fff;
 }
+
+.box-down{
+    border: 1px solid black;
+    margin: 5px;
+    padding: 5px;
+    width: 80vw;
+    height: 51vh;
+    overflow: auto;
+    text-align: justify;
+}
+
+.read{
+    background-color: black;
+    color: white;
+}

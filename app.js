@@ -18,34 +18,47 @@ const homeStartingContent = "Lacu s vel facilisis volutpat est velit egestas dui
 const aboutContent = "Hac habitasse platea dictumst vestibulum rhoncus est pellentesque. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Non diam phasellus vestibulum lorem sed. Platea dictumst quisque sagittis purus sit. Egestas sed sed risus pretium quam vulputate dignissim suspendisse. Mauris in aliquam sem fringilla. Semper risus in hendrerit gravida rutrum quisque non tellus orci. Amet massa vitae tortor condimentum lacinia quis vel eros. Enim ut tellus elementum sagittis vitae. Mauris ultrices eros in cursus turpis massa tincidunt dui.";
 const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rhoncus urna neque viverra justo nec ultrices. Arcu dui vivamus arcu felis bibendum. Consectetur adipiscing elit duis tristique. Risus viverra adipiscing at in tellus integer feugiat. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Consequat interdum varius sit amet mattis. Iaculis nunc sed augue lacus. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing elit. Pulvinar elementum integer enim neque. Ultrices gravida dictum fusce ut placerat orci nulla. Mauris in aliquam sem fringilla ut morbi tincidunt. Tortor posuere ac ut consequat semper viverra nam libero.";
 
+
 app.get('/',function(req,res){
     res.render('index',{hometext:homeStartingContent,posts:postsarray});
 });
+
 
 app.get('/about',function(req,res){
     res.render('about',{pagetitle:'About us',abouttext:aboutContent})
 });
 
+
 app.get('/contact',function(req,res){
     res.render('contact',{pagetitle:'Contact us',contacttext:contactContent})
 });
+
 
 app.get('/compose',function(req,res){
     res.render('compose');
 });
 
+
 app.post('/compose',function(req,res){
     const post = {
-        title: _.upperFirst(req.body.posttitle),
-        desc: _.lowerCase(req.body.postdesc)
+        title: req.body.posttitle,
+        desc: req.body.postdesc
     };
     postsarray.push(post);
     res.redirect('/');
 });
 
 
-
-
+app.get('/post/:id',function(req,res){
+    const requestedTitle = _.lowerCase(req.params.id)
+    postsarray.forEach(function(post){
+        const title = _.lowerCase(post.title);
+        const desc = post.desc;
+        if(requestedTitle === title){
+            res.render('post',{heading:title,content:desc});
+        }
+    });
+});
 
 
 app.listen(PORT,function(req,res){

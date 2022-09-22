@@ -3,10 +3,12 @@
     <h1>Home</h1>
     <p><%= hometext %></p>
 </div>
-<div class="box">
+<div class="box-down">
     <% posts.forEach(function(post){ %>
         <h1> <%= post.title %> </h1>
-        <p> <%= post.desc %> </p>
+        <p> <%= post.desc.substring(0,50)%> </p>
+        <a class="read" href="/post/<%=post.title%>">Read More...</a>
+        <hr>
     <% }) %>
 </div>
 <%- include('partials/footer'); -%>
